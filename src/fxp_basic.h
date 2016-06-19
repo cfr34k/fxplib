@@ -3,32 +3,17 @@
 
 #include "fxp.h"
 
-inline fxp_t fxp_from_float(float v)
-{
-	return v * (1 << POINTPOS);
-}
-
-inline fxp_t fxp_from_int(int32_t v)
-{
-	return v << POINTPOS;
-}
-
-inline float fxp_to_float(fxp_t v)
-{
-	return (float)v / (1 << POINTPOS);
-}
-
-inline fxp_t fxp_add(fxp_t a, fxp_t b)
+static inline fxp_t fxp_add(fxp_t a, fxp_t b)
 {
 	return a+b;
 }
 
-inline fxp_t fxp_sub(fxp_t a, fxp_t b)
+static inline fxp_t fxp_sub(fxp_t a, fxp_t b)
 {
 	return a-b;
 }
 
-inline fxp_t fxp_mult(fxp_t a, fxp_t b)
+static inline fxp_t fxp_mult(fxp_t a, fxp_t b)
 {
 	fxp_tmp_t tmp_val;
 
@@ -37,13 +22,18 @@ inline fxp_t fxp_mult(fxp_t a, fxp_t b)
 	return (tmp_val >> POINTPOS);
 }
 
-inline fxp_t fxp_div(fxp_t a, fxp_t b)
+static inline fxp_t fxp_div(fxp_t a, fxp_t b)
 {
 	fxp_tmp_t tmp_val;
 
 	tmp_val = ((fxp_tmp_t)a << POINTPOS) / b;
 
 	return tmp_val;
+}
+
+static inline fxp_t fxp_inv(fxp_t n)
+{
+	return ((fxp_tmp_t)1 << (2*POINTPOS)) / n;
 }
 
 #endif // FXP_BASIC_H

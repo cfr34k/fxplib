@@ -8,7 +8,7 @@
 #include <stdint.h>
 
 typedef int32_t fxp_t;
-typedef int32_t fxp_tmp_t;
+typedef int64_t fxp_tmp_t;
 
 /*
  * IMPORTANT:

@@ -1,0 +1,4 @@
+lib/
+obj/
+test/test_libfxp
+test/test_libfxp.o

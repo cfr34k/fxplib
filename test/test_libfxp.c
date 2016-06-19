@@ -25,19 +25,29 @@ int main(void)
 	d = fxp_from_float(10);
 	e = fxp_from_float(1);
 
-	x = fxp_mult(a, b); // 50
+	x = fxp_mult(a, b); // -50
 	printf("%f\n", fxp_to_float(x));
 
-	x = fxp_add(x, c);  // 50.3
+	x = fxp_add(x, c);  // -49.7
 	printf("%f\n", fxp_to_float(x));
 
-	x = fxp_div(x, d);  // 5.03
+	x = fxp_div(x, d);  // -4.97
 	printf("%f\n", fxp_to_float(x));
 
-	x = fxp_div(e, x);  // 0.19...
+	x = fxp_div(e, x);  // -0.20...
 	printf("%f\n", fxp_to_float(x));
 
-	fxp_format_int((x * 100) >> POINTPOS, number); printf("%s\n", number);
+	printf("+++\n");
+
+	a = fxp_from_int(1000);
+	b = fxp_inv(a);
+	c = fxp_from_float(5.124);
+	x = fxp_mult(b, c); // 0.005124
+
+	printf("%f\n", fxp_to_float(a));
+	printf("%f\n", fxp_to_float(b));
+	printf("%f\n", fxp_to_float(c));
+	printf("%f\n", fxp_to_float(x));
 
 	return 0;
 }

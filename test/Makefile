@@ -12,7 +12,7 @@ export PREFIX POSTFIX
 
 LIBFXP = ../lib/debug/libfxp_test.a
 
-CFLAGS = -Wall -std=c99 -pedantic -I../src
+CFLAGS = -Wall -std=c99 -pedantic -ggdb -I../src
 LDFLAGS = -L../lib/debug -lfxp_test
 
 all: build_libfxp test_libfxp
@@ -26,3 +26,7 @@ test_libfxp: test_libfxp.o $(LIBFXP)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
+
+clean:
+	rm -rf ../lib ../obj
+	rm -f test_libfxp test_libfxp.o

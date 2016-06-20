@@ -7,8 +7,9 @@
 int main(void)
 {
 	fxp_t a, b, c, d, e, x;
+	int n;
 
-	char number[11];
+	char number[FXP_STR_MAXLEN];
 
 	fxp_format_int(10, number); printf("%s\n", number);
 	fxp_format_int(-10, number); printf("%s\n", number);
@@ -48,6 +49,38 @@ int main(void)
 	printf("%f\n", fxp_to_float(b));
 	printf("%f\n", fxp_to_float(c));
 	printf("%f\n", fxp_to_float(x));
+
+	printf("+++ FORMAT TEST:\n");
+
+	x = fxp_from_float(3.56);
+	n = fxp_format(x, number, 0); printf("[%i] %s\n", n, number);
+	n = fxp_format(x, number, 1); printf("[%i] %s\n", n, number);
+	n = fxp_format(x, number, 2); printf("[%i] %s\n", n, number);
+	n = fxp_format(x, number, 3); printf("[%i] %s\n", n, number);
+
+	x = fxp_from_float(-4.71);
+	n = fxp_format(x, number, 0); printf("[%i] %s\n", n, number);
+	n = fxp_format(x, number, 1); printf("[%i] %s\n", n, number);
+	n = fxp_format(x, number, 2); printf("[%i] %s\n", n, number);
+	n = fxp_format(x, number, 3); printf("[%i] %s\n", n, number);
+
+	x = fxp_from_float(-0.01);
+	n = fxp_format(x, number, 0); printf("[%i] %s\n", n, number);
+	n = fxp_format(x, number, 1); printf("[%i] %s\n", n, number);
+	n = fxp_format(x, number, 2); printf("[%i] %s\n", n, number);
+	n = fxp_format(x, number, 3); printf("[%i] %s\n", n, number);
+
+	x = fxp_from_float(0.01);
+	n = fxp_format(x, number, 0); printf("[%i] %s\n", n, number);
+	n = fxp_format(x, number, 1); printf("[%i] %s\n", n, number);
+	n = fxp_format(x, number, 2); printf("[%i] %s\n", n, number);
+	n = fxp_format(x, number, 3); printf("[%i] %s\n", n, number);
+
+	x = fxp_from_int(0);
+	n = fxp_format(x, number, 0); printf("[%i] %s\n", n, number);
+	n = fxp_format(x, number, 1); printf("[%i] %s\n", n, number);
+	n = fxp_format(x, number, 2); printf("[%i] %s\n", n, number);
+	n = fxp_format(x, number, 3); printf("[%i] %s\n", n, number);
 
 	return 0;
 }

@@ -28,6 +28,9 @@ float fxp_to_float(fxp_t v);
 /*
  * FXP to string conversions
  */
-void fxp_format_int(int32_t n, char *str);
+#define FXP_STR_MAXLEN 12 // 10 digits + sign + decimal point
+
+int fxp_format_int(int32_t n, char *str);
+int fxp_format(int32_t n, char *str, unsigned int frac_digits);
 
 #endif // FXP_H

@@ -12,7 +12,8 @@ AR       = $(PREFIX)ar
 BUILD:=debug
 
 # basic build flags configuration (CFLAGS should be set from outside Makefile)
-CFLAGS+=-Wall -std=c99 -pedantic
+CFLAGS+=-Wall -std=c99 -pedantic \
+        -Iinclude
 
 # target configuration
 POSTFIX ?= default
@@ -22,7 +23,7 @@ VCSVERSION := $(shell git rev-parse --short HEAD)
 
 # source files for the project
 SOURCE := $(shell find src/ -name '*.c')
-INCLUDES := $(shell find src/ -name '*.h')
+INCLUDES := $(shell find include/ src/ -name '*.h')
 
 # additional dependencies for build (proper targets must be specified by user)
 DEPS :=

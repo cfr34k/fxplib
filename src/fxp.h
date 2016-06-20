@@ -30,7 +30,23 @@ float fxp_to_float(fxp_t v);
  */
 #define FXP_STR_MAXLEN 12 // 10 digits + sign + decimal point
 
+/*!
+ * Formats the given integer into str.
+ *
+ * \param n      The integer to format.
+ * \param str    The string to write the result to.
+ * \returns      The number of characters written.
+ */
 int fxp_format_int(int32_t n, char *str);
+
+/*!
+ * Formats the given fixed point number into str.
+ *
+ * \param n            The number to format.
+ * \param str          The string to write the result to.
+ * \param frac_digits  Number of fractional digits to display.
+ * \returns            The number of characters written.
+ */
 int fxp_format(int32_t n, char *str, unsigned int frac_digits);
 
 #endif // FXP_H

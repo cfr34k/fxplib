@@ -54,18 +54,6 @@ int fxp_format(fxp_t v, char *str, unsigned int frac_digits)
 	fxp_t factor;
 	char *ptr;
 
-	if(v == 0) {
-		*(str++) = '0';
-		if(frac_digits > 0) {
-			*(str++) = '.';
-			for(unsigned int i = 0; i < frac_digits; i++) {
-				*(str++) = '0';
-			}
-		}
-		*str = '\0';
-		return 1 + (frac_digits ? (frac_digits+1) : 0);
-	}
-
 	// scale the input value to make it processible
 	factor = 1;
 	for(unsigned int i = 0; i < frac_digits; i++) {
@@ -75,6 +63,23 @@ int fxp_format(fxp_t v, char *str, unsigned int frac_digits)
 	v_scaled = (int32_t)(((fxp_tmp_t)v * factor + (1 << (POINTPOS-1))) >> POINTPOS);
 	//                                Rounding -^
 
+	// handle 0 value
+	if(v_scaled == 0) {
+		*(str++) = '0';
+		if(frac_digits > 0) {
+			*(str++) = '.';
+			for(unsigned int i = 0; i < frac_digits; i++) {
+				*(str++) = '0';
+			}
+		}
+		*str = '\0';
+		if(frac_digits > 0) {
+			return 2 + frac_digits;
+		} else {
+			return 1;
+		}
+	}
+
 	// handle sign: set '-' as first character and invert sign. Now remaining
 	// processing is identical for positive and negative numbers.
 	if(v_scaled < 0) {
@@ -82,8 +87,13 @@ int fxp_format(fxp_t v, char *str, unsigned int frac_digits)
 		*(str++) = '-';
 	}
 
-	// calculate number of digits
-	tmp = v_scaled + factor;
+	// calculate number of digits.
+	tmp = v_scaled;
+
+	// handle numbers in range ]0;1[ correctly
+	if(tmp < factor) {
+		tmp = factor;
+	}
 
 	while(tmp != 0) {
 		tmp /= 10;
@@ -94,6 +104,7 @@ int fxp_format(fxp_t v, char *str, unsigned int frac_digits)
 		ndigits++; // for the decimal point
 	}
 
+	// write the digits
 	tmp = v_scaled;
 
 	ptr = str + ndigits - 1;
@@ -112,6 +123,10 @@ int fxp_format(fxp_t v, char *str, unsigned int frac_digits)
 
 	str[ndigits] = '\0';
 
-	return ndigits;
+	if(v < 0) {
+		return ndigits + 1; // for the sign
+	} else {
+		return ndigits;
+	}
 }
 

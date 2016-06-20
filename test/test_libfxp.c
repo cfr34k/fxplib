@@ -58,6 +58,12 @@ int main(void)
 	n = fxp_format(x, number, 2); printf("[%i] %s\n", n, number);
 	n = fxp_format(x, number, 3); printf("[%i] %s\n", n, number);
 
+	x = fxp_from_float(99.99);
+	n = fxp_format(x, number, 0); printf("[%i] %s\n", n, number);
+	n = fxp_format(x, number, 1); printf("[%i] %s\n", n, number);
+	n = fxp_format(x, number, 2); printf("[%i] %s\n", n, number);
+	n = fxp_format(x, number, 3); printf("[%i] %s\n", n, number);
+
 	x = fxp_from_float(-4.71);
 	n = fxp_format(x, number, 0); printf("[%i] %s\n", n, number);
 	n = fxp_format(x, number, 1); printf("[%i] %s\n", n, number);

@@ -49,4 +49,15 @@ int fxp_format_int(int32_t n, char *str);
  */
 int fxp_format(int32_t n, char *str, unsigned int frac_digits);
 
+/*!
+ * Generate a output string which contains the input string right-aligned,
+ * prefixed with the fill characters.
+ *
+ * \param in          The input string.
+ * \param out         The output string (must be at least width+1 characters long).
+ * \param width       Width of the output.
+ * \param fill        The fill character.
+ */
+void fxp_right_align(char *in, char *out, unsigned int width, char fill);
+
 #endif // FXP_H

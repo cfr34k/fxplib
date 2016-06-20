@@ -130,3 +130,33 @@ int fxp_format(fxp_t v, char *str, unsigned int frac_digits)
 	}
 }
 
+void fxp_right_align(char *in, char *out, unsigned int width, char fill)
+{
+	unsigned int inlen = 0;
+	char *ptr;
+
+	ptr = in;
+	while(*ptr) {
+		inlen++;
+		ptr++;
+	}
+
+	if(inlen > width) {
+		// if input does not fit in width characters, do left align, as right align
+		// does not really make much sense here (assuming numbers).
+		for(unsigned int i = 0; i < width; i++) {
+			*(out++) = *(in++);
+		}
+	} else {
+		// proper right align
+		for(unsigned int i = 0; i < width; i++) {
+			if(i < (width - inlen)) {
+				*(out++) = fill;
+			} else {
+				*(out++) = *(in++);
+			}
+		}
+	}
+
+	*out = '\0';
+}

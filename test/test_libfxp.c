@@ -10,6 +10,7 @@ int main(void)
 	int n;
 
 	char number[FXP_STR_MAXLEN];
+	char aligned[32];
 
 	fxp_format_int(10, number); printf("%s\n", number);
 	fxp_format_int(-10, number); printf("%s\n", number);
@@ -87,6 +88,14 @@ int main(void)
 	n = fxp_format(x, number, 1); printf("[%i] %s\n", n, number);
 	n = fxp_format(x, number, 2); printf("[%i] %s\n", n, number);
 	n = fxp_format(x, number, 3); printf("[%i] %s\n", n, number);
+
+	printf("+++ RIGHT ALIGN TEST:\n");
+
+	x = fxp_from_float(-4.71);
+	n = fxp_format(x, number, 0); fxp_right_align(number, aligned, 10, '*'); printf("[%i] [%s]\n", n, aligned);
+	n = fxp_format(x, number, 3); fxp_right_align(number, aligned, 10, '*'); printf("[%i] [%s]\n", n, aligned);
+	n = fxp_format(x, number, 0); fxp_right_align(number, aligned, 5, '*'); printf("[%i] [%s]\n", n, aligned);
+	n = fxp_format(x, number, 3); fxp_right_align(number, aligned, 5, '*'); printf("[%i] [%s]\n", n, aligned);
 
 	return 0;
 }

@@ -21,6 +21,7 @@ typedef int64_t fxp_tmp_t;
  * FXP conversion functions
  */
 fxp_t fxp_from_int(int32_t v);
+int32_t fxp_to_int(fxp_t v);
 
 fxp_t fxp_from_float(float v);
 float fxp_to_float(fxp_t v);

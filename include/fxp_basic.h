@@ -36,4 +36,13 @@ static inline fxp_t fxp_inv(fxp_t n)
 	return ((fxp_tmp_t)1 << (2*POINTPOS)) / n;
 }
 
+static inline fxp_t fxp_abs(fxp_t n)
+{
+	if(n >= 0) {
+		return n;
+	} else {
+		return -n;
+	}
+}
+
 #endif // FXP_BASIC_H

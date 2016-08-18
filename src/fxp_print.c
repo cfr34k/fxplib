@@ -49,7 +49,7 @@ int fxp_format_int(int32_t n, char *str)
 
 int fxp_format(fxp_t v, char *str, unsigned int frac_digits)
 {
-	int ndigits = 0, digits_written = 0;
+	unsigned int ndigits = 0, digits_written = 0;
 	int32_t v_scaled, tmp;
 	fxp_t factor;
 	char *ptr;

@@ -1,15 +1,7 @@
 #ifndef FXP_H
 #define FXP_H
 
-#ifndef POINTPOS
-	#warning POINTPOS is undefined, assuming 16.
-	#define POINTPOS 16
-#endif
-
-#include <stdint.h>
-
-typedef int32_t fxp_t;
-typedef int64_t fxp_tmp_t;
+#include <fxp_basic.h>
 
 /*
  * IMPORTANT:

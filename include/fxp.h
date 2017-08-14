@@ -2,6 +2,7 @@
 #define FXP_H
 
 #ifndef POINTPOS
+	#warning POINTPOS is undefined, assuming 16.
 	#define POINTPOS 16
 #endif
 

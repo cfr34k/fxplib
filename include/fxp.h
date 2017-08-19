@@ -11,11 +11,14 @@
  */
 
 /*
+ * FXP conversion macros
+ */
+#define FXP_FROM_INT(x) ((fxp_t)x << POINTPOS)
+#define FXP_TO_INT(x)   ((int32_t)(x >> POINTPOS))
+
+/*
  * FXP conversion functions
  */
-fxp_t fxp_from_int(int32_t v);
-int32_t fxp_to_int(fxp_t v);
-
 fxp_t fxp_from_float(float v);
 float fxp_to_float(fxp_t v);
 

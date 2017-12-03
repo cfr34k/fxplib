@@ -13,8 +13,8 @@
 /*
  * FXP conversion macros
  */
-#define FXP_FROM_INT(x) ((fxp_t)x << POINTPOS)
-#define FXP_TO_INT(x)   ((int32_t)(x >> POINTPOS))
+#define FXP_FROM_INT(x) ((fxp_t)(x) << POINTPOS)
+#define FXP_TO_INT(x)   ((int32_t)((x) >> POINTPOS))
 
 /*
  * FXP conversion functions

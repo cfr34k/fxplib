@@ -12,6 +12,17 @@ typedef int32_t fxp_t;
 typedef int64_t fxp_tmp_t;
 
 
+/* some constants */
+#if POINTPOS > 29
+	#define FXP_CONSTSHIFT << (POINTPOS - 29)
+#else
+	#define FXP_CONSTSHIFT >> (29 - POINTPOS)
+#endif
+
+#define FXP_PI (0x6487ed51 FXP_CONSTSHIFT)
+#define FXP_E (0x56fc2a2c FXP_CONSTSHIFT)
+
+
 static inline fxp_t fxp_add(fxp_t a, fxp_t b)
 {
 	return a+b;

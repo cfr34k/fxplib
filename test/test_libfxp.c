@@ -41,7 +41,7 @@ int main(void)
 
 	printf("+++\n");
 
-	a = fxp_from_int(1000);
+	a = FXP_FROM_INT(1000);
 	b = fxp_inv(a);
 	c = fxp_from_float(5.124);
 	x = fxp_mult(b, c); // 0.005124
@@ -83,7 +83,7 @@ int main(void)
 	n = fxp_format(x, number, 2); printf("[%i] %s\n", n, number);
 	n = fxp_format(x, number, 3); printf("[%i] %s\n", n, number);
 
-	x = fxp_from_int(0);
+	x = FXP_FROM_INT(0);
 	n = fxp_format(x, number, 0); printf("[%i] %s\n", n, number);
 	n = fxp_format(x, number, 1); printf("[%i] %s\n", n, number);
 	n = fxp_format(x, number, 2); printf("[%i] %s\n", n, number);

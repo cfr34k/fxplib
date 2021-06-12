@@ -2,7 +2,7 @@
 # Edit the following variables for your own needs
 
 # toolchain configuration
-PREFIX  ?= arm-none-eabi-
+PREFIX  ?=
 CC       = $(PREFIX)gcc
 LD       = $(PREFIX)gcc
 AR       = $(PREFIX)ar
